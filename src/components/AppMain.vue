@@ -1,5 +1,4 @@
 <script>
-import axios from 'axios';
 import {store} from '../store.js';
 export default {
     name: 'AppMain',
@@ -7,25 +6,15 @@ export default {
         return{ 
             store
         }
-    },
-    created(){
-        this.getCards();
-    },
-    methods: {
-        getCards(){
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0').then((response) => {
-                store.cardList = response.data.data;
-            });
-        }
     }
 }
 </script>
 <template lang="">
     <div class="container">
         <div class="row">
-            <div class="my-col-5">
+            <div class="my-col-5" v-for="card, index in store.cardsList" :key="index">
                 <div class="my-card">
-
+                    {{ card.name }}
                 </div>
             </div>
         </div>
