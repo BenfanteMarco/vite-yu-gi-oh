@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         getCards(){
-            axios.get('store.apiUrl').then((response) => {
+            axios.get(store.apiUrl).then((response) => {
                 store.cardsList = response.data.data;
             });
         }
