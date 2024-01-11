@@ -1,7 +1,14 @@
-@use './partials/variables' as *;
-@import 'node_modules/bootstrap/scss/bootstrap';
-@import '@fontsource-variable/montserrat';
+body{
+    background-color: #D48F38;
+}
 
-* {
-    font-family: 'Montserrat', sans-serif;
+.container{
+    background-color: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row{
+    width: 100%;
+    display: flex;
 }
