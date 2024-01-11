@@ -1,9 +1,21 @@
 <script>
+import axios from 'axios';
+import {store} from '../store.js';
 export default {
     name: 'AppMain',
     data(){
         return{ 
-
+            store
+        }
+    },
+    created(){
+        this.getCards();
+    },
+    methods: {
+        getCards(){
+            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0').then((response) => {
+                store.cardList = response.data.data;
+            });
         }
     }
 }
