@@ -6,7 +6,7 @@ export default {
     data(){
         return{
             store,
-            getArchetypesList: [],
+            archetypesList: [],
         }
     },
     created(){
@@ -14,8 +14,8 @@ export default {
     },
     methods: {
         getArchetypesList(){
-            axios.get(store.apiArchetypeUrl).then((response) =>{
-                this.getArchetypesList = response.data
+            axios.get(store.apiArchetypeUrl).then((response) => {
+                this.archetypesList = response.data.slice(0, 5);
             });
         }
     }
@@ -26,6 +26,8 @@ export default {
         <div class="row">
             <select class="select-archetype">
                 <option value="">All Types</option>
+                <option :value="archetype.archetype_name" v-for="archetype, index in archetypesList" :key="index">
+                {{ archetype.archetype_name }}</option>
             </select>
         </div>
     </div>
