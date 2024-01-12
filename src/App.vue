@@ -1,13 +1,15 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
+import AppFilter from './components/AppFilter.vue';
 
 import axios from 'axios';
 import {store} from './store.js';
 export default {
   components: {
     AppHeader,
-    AppMain
+    AppMain,
+    AppFilter,
   },
   data(){
         return{ 
@@ -28,6 +30,7 @@ export default {
 </script>
 <template lang="">
   <AppHeader />
+  <AppFilter />
   <AppMain />
 </template>
 <style lang="scss">
