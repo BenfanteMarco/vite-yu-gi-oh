@@ -21,16 +21,23 @@ export default {
     },
     methods: {
         getCards(){
-            axios.get(store.apiUrl).then((response) => {
-                store.cardsList = response.data.data;
-            });
+          let apiUrl = store.apiUrl;
+          if(store.searchArchetype !== ''){
+            apiUrl += `&archetype=${store.searchArchetype}`;
+          }
+          axios.get(apiUrl).then((response) => {
+              store.cardsList = response.data.data;
+          });
+        },
+        filetrCradsByArchetype(){
+          this.getCards();
         }
     }
 }
 </script>
 <template lang="">
   <AppHeader />
-  <AppFilter />
+  <AppFilter @filter_cards="filetrCradsByArchetype"/>
   <AppMain />
 </template>
 <style lang="scss">

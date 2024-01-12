@@ -15,7 +15,7 @@ export default {
     methods: {
         getArchetypesList(){
             axios.get(store.apiArchetypeUrl).then((response) => {
-                this.archetypesList = response.data.slice(0, 5);
+                this.archetypesList = response.data.slice(0, 15);
             });
         }
     }
@@ -24,7 +24,7 @@ export default {
 <template lang="">
     <div class="container-select mt-30">
         <div class="row">
-            <select class="select-archetype">
+            <select class="select-archetype" v-model="store.searchArchetype" @change="$emit('filter_cards')">
                 <option value="">All Types</option>
                 <option :value="archetype.archetype_name" v-for="archetype, index in archetypesList" :key="index">
                 {{ archetype.archetype_name }}</option>
